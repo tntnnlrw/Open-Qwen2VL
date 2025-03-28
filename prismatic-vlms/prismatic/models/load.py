@@ -21,7 +21,7 @@ overwatch = initialize_overwatch(__name__)
 
 
 # === HF Hub Repository ===
-HF_HUB_REPO = "TRI-ML/prismatic-vlms"
+HF_HUB_REPO = "weizhiwang"
 
 
 # === Available Models ===
@@ -60,9 +60,9 @@ def load(
             raise ValueError(f"Couldn't find `{model_id_or_path = }; check `prismatic.available_model_names()`")
 
         overwatch.info(f"Downloading `{(model_id := GLOBAL_REGISTRY[model_id_or_path]['model_id'])} from HF Hub")
-        config_json = hf_hub_download(repo_id=HF_HUB_REPO, filename=f"{model_id}/config.json", cache_dir=cache_dir)
+        config_json = hf_hub_download(repo_id=f"{HF_HUB_REPO}/{model_id}", filename="config.json", cache_dir=cache_dir)
         checkpoint_pt = hf_hub_download(
-            repo_id=HF_HUB_REPO, filename=f"{model_id}/checkpoints/latest-checkpoint.pt", cache_dir=cache_dir
+            repo_id=f"{HF_HUB_REPO}/{model_id}", filename="checkpoints/latest-checkpoint.pt", cache_dir=cache_dir
         )
 
     # Load Model Config from `config.json`
