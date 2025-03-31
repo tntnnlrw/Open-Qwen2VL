@@ -357,12 +357,7 @@ class PreTrainDataset(Dataset[Dict[str, torch.Tensor]]):
                 subset_examples = glob.glob(os.path.join(subset_data_path, '**', '*packed.json'), recursive=True)
             print("{} contains {} examples".format(subset_data_path, len(subset_examples)))
             
-            if "obelics" in subset_data_path.lower() or "mmc4" in subset_data_path.lower():
-                self.examples += subset_examples[:int(train_num_samples//2)]
-            elif "datacomp" in subset_data_path.lower():
-                self.examples += subset_examples[:train_num_samples]
-            else:
-                self.examples += subset_examples
+            self.examples += subset_examples
             print("Now the dataset is expanded to contain {} examples".format(len(self.examples)))
 
     # === Unimodal + Multimodal Handling ===
