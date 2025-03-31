@@ -1,6 +1,6 @@
 CKPT_PATH=$1
 CKPTID=$2
-DATAID=$3
+DATAPATH=$3
 
 # mount_path: you can change it to the path where you pre-download the pre-trained LLMs, if you will to download the model directly from HF hub, please use the holder name of the model, i.e. Qwen for Qwen-series models. Then the mount_path will be concatenated with model_id
 
@@ -23,4 +23,4 @@ torchrun --standalone --nnodes 1 --nproc-per-node 8 scripts/pretrain.py \
   --trackers=["jsonl",] \
   --dataset.type "llava-v15" \
   --pretrained_checkpoint ${CKPT_PATH}/checkpoints/latest-checkpoint.pt \
-  --dataset.finetune_stage_components=["${DATAID}","data/llava/images/"]
+  --dataset.finetune_stage_components=["${DATAPATH}","data/llava/images/"]

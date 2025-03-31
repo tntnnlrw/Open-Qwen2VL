@@ -1,9 +1,7 @@
 CKPTID=$1
-DATAID=$2
-STAGE=$3
-TRAIN_NUM_SAMPLES=$4
-BSZ=$5
-PER_GPU_BSZ=$6
+STAGE=$2
+BSZ=$3
+PER_GPU_BSZ=$4
 
 torchrun --nproc_per_node 8 scripts/pretrain.py \
   --stage ${STAGE} \
@@ -18,7 +16,5 @@ torchrun --nproc_per_node 8 scripts/pretrain.py \
   --model.pretrain_epochs 1 \
   --mount_path Qwen \
   --run_root_dir checkpoints/ \
-  --dataset.type "caption" \
-  --trackers=["jsonl",] \
-  --dataset.train_num_samples ${TRAIN_NUM_SAMPLES} \
+  --dataset.type "pretrain" \
   --dataset.dataset_root_dir data/datacomp/datacomp_hq_single_pkl_pil:data/ccs/ccs_single_pkl_pil/:data/laion/laion_single_pkl_pil/

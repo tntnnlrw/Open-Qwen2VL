@@ -50,24 +50,22 @@ class LLaVa_V15_Config(DatasetConfig):
     max_num_images: int = 6
     workers: int = 4
 
-# [PreTrain] OBELICS+DataComp
+# [PreTrain]
 @dataclass
 class OBELICS_PreTrain_Config(DatasetConfig):
-    dataset_id: str = "obelics"
+    dataset_id: str = "pretrain"
 
     align_stage_components: Tuple[Path, Path] = (
         Path("download/llava-laion-cc-sbu-558k/chat.json"),
         Path("download/llava-laion-cc-sbu-558k/"),
     )
     finetune_stage_components: Tuple[Path, Path] = (
-        Path("/fsx-training/shopqa-training-fsx-prod-us-east-1/home/wzwang/data/llava/llava_v1_5_mix665k.json"),
-        Path("/fsx-training/shopqa-training-fsx-prod-us-east-1/home/wzwang/data/llava/data"),
+        Path("data/llava/llava_v1_5_mix665k.json"),
+        Path("data/llava/data"),
     )
     dataset_root_dir: str = "data"
-    # dataset_root_dir: Path = Path("/fsx-training/shopqa-training-fsx-prod-us-east-1/home/wzwang/data/data/OBELICS/data/splits/")
-    # dataset_root_dir: Path = "/fsx-training/shopqa-training-fsx-prod-us-east-1/home/wzwang/data/data/OBELICS/data/splits/{00000000..00000500}.tar"
 
-    train_num_samples: int = 200000
+    train_num_samples: int = 3000000
     dataset_resampled: bool = True
     min_num_images: int = 1
     max_num_images: int = 6
