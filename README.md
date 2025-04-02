@@ -1,6 +1,6 @@
 # Open-Qwen2VL
 
-[![arXiv](https://img.shields.io/badge/arXiv-2402.07865-df2a2a.svg?style=for-the-badge)](https://arxiv.org/abs/2504.00595)
+[![arXiv](https://img.shields.io/badge/arXiv-2504.00595-df2a2a.svg?style=for-the-badge)](https://arxiv.org/abs/2504.00595)
 
 Official code repo for our work [Open-Qwen2VL: Compute-Efficient Pre-Training of Fully-Open Multimodal LLMs on Academic Resources](https://victorwz.github.io/Open-Qwen2VL/).
 
