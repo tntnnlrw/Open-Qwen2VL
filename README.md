@@ -1,6 +1,8 @@
 # Open-Qwen2VL
 
-Official code repo for [Open-Qwen2VL]().
+[![arXiv](https://img.shields.io/badge/arXiv-2402.07865-df2a2a.svg?style=for-the-badge)](https://arxiv.org/abs/2504.00595)
+
+Official code repo for our work [Open-Qwen2VL: Compute-Efficient Pre-Training of Fully-Open Multimodal LLMs on Academic Resources](https://victorwz.github.io/Open-Qwen2VL/).
 
 ## Introduction
 This repo supports:
@@ -8,14 +10,14 @@ This repo supports:
 - High quality data selection based on the quality scores and resharding into webdataset format
 - Multimodal Sequence Packing towards large-scale image-text dataset in webdataset format (supporting both caption data and interleaved data)
 - Pre-training with packed multimodal sequences
-- Supversied fine-tuning on both small-scale SFT data like LLaVA-665k and large-scale SFT data like MammoTH-VL-10M
+- Supversied fine-tuning on both small-scale SFT data like [LLaVA-665k](https://huggingface.co/datasets/liuhaotian/LLaVA-Instruct-150K/blob/main/llava_v1_5_mix665k.json) and large-scale SFT data like [MAmmoTH-VL-10M](https://huggingface.co/datasets/MAmmoTH-VL/MAmmoTH-VL-Instruct-12M)
 - Evaluation on a series of multimodal benchmarks
 
 
 ## Release
 - [3/31/2025] 🔥 We released all pre-trained model and instruction-tuned model checkpoints at [Open-Qwen2VL](https://huggingface.co/weizhiwang/Open-Qwen2VL) and [Open-Qwen2VL-Base](https://huggingface.co/weizhiwang/Open-Qwen2VL-Base)
 - [3/31/2025] 🔥 We released all pre-training data in webdataset format at [Open-Qwen2VL-Data](https://huggingface.co/datasets/weizhiwang/Open-Qwen2VL-Data).
-- [3/31/2025] 🔥 We released the technical report for **Open-Qwen2VL**. 
+- [3/31/2025] 🔥 We released the technical report for [**Open-Qwen2VL**](https://arxiv.org/abs/2504.00595).
 
 ## Install
 
@@ -79,18 +81,19 @@ Here are the parameters for training:
 - `CKPTID`: id for the saved checkpoint;
 - `STAGE`: choose between `pretrain` and `full-pretrain`, in which the full-pretrain will make the vision encoder trainable as well;
 - `BSZ`: global batch size;
-- `per_gpu_bsz`: the batch size for each gpu. If the global_bsz != num_gpus * per_gpu_bsz, then the gradient accumulation will be applied.
+- `PER_GPU_BSZ`: the batch size for each gpu. If the global_bsz != num_gpus * per_gpu_bsz, then the gradient accumulation will be applied.
 
 ## Visual SFT
 ### Large-Scale SFT on MammoTH-VL-10M
+Please firstly download and unzip the images of [MAmmoTH-VL-10M](https://huggingface.co/datasets/MAmmoTH-VL/MAmmoTH-VL-Instruct-12M). Then run ```python data_prepare/split_mammoth_10m.py``` to split each instruction examples into single json files.
+
 Please run the training script
 ```Shell
-bash prismatic-vlms/fine_tune.sh ${CKPT_PATH} ${CKPTID} ${DATAPATH}
+bash prismatic-vlms/fine_tune_mammoth.sh ${CKPT_PATH} ${CKPTID}
 ```
 Here are the parameters for training:
 - `CKPT_PATH`: the path to the pre-trained MLLM checkpoint after the pre-training stage;
-- `CKPTID`: id for the saved checkpoint;
-- `DATAPATH`: the path to the SFT dataset json file.
+- `CKPTID`: id for the saved checkpoint
 
 ### Normal SFT Scripts
 
@@ -116,7 +119,7 @@ Please cite our paper if you find this repository interesting or helpful:
 @article{Open-Qwen2VL,
   title={Open-Qwen2VL: Compute-Efficient Pre-Training of Fully-Open Multimodal LLMs on Academic Resources},
   author={Wang, Weizhi and Tian, Yu and Yang, Linjie and Wang, Heng and Yan, Xifeng},
-  journal={arXiv preprint arXiv:},
+  journal={arXiv preprint arXiv:2504.00595},
   year={2025}
 }
 ```
