@@ -1,9 +1,9 @@
 # MLLM Evaluation
 
 ## Install
-Please continue the installation within the previously installed [prismatic-vlms](../README.md##Install):
+Please continue the installation within the previously installed [openqwen2vl](../README.md##Install) environment and ensure the modified `prismatic-vlms` repo has been installed:
 ```Shell
-conda activate mllm
+conda activate openqwen2vl
 pip install -e vlm-evaluation
 ```
 
