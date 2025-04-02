@@ -1,6 +1,6 @@
 CKPT_PATH=$1
 CKPTID=$2
-DATAPATH=$3
+DATAPATH="data/MAmmoTH-VL-Instruct-12M/mammoth_si_10M_simple.jsonl"
 
 # mount_path: you can change it to the path where you pre-download the pre-trained LLMs, if you will to download the model directly from HF hub, please use the holder name of the model, i.e. Qwen for Qwen-series models. Then the mount_path will be concatenated with model_id
 

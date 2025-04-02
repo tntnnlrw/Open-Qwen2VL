@@ -20,7 +20,6 @@ torchrun --standalone --nnodes 1 --nproc-per-node 8 scripts/pretrain.py \
   --model.finetune_per_device_batch_size 2 \
   --mount_path Qwen \
   --run_root_dir checkpoints \
-  --trackers=["jsonl",] \
   --dataset.type "llava-v15" \
   --pretrained_checkpoint ${CKPT_PATH}/checkpoints/latest-checkpoint.pt \
   --dataset.finetune_stage_components=["${DATAPATH}","data/llava/images/"]
