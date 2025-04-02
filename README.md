@@ -66,8 +66,8 @@ We have released all our pre-training image-text caption data in webdataset form
 
 Then please run
 ```shell
-bash Open-Qwen2VL/mm_sequence_packing/multiprocess_sequence_packing_image_to_pil.sh 0 4 504 datacomp
-bash Open-Qwen2VL/mm_sequence_packing/multiprocess_sequence_packing_image_to_pil.sh 0 4 326 ccs
+bash mm_sequence_packing/multiprocess_sequence_packing_image_to_pil.sh 0 4 504 datacomp
+bash mm_sequence_packing/multiprocess_sequence_packing_image_to_pil.sh 0 4 326 ccs
 ```
 
 ## Compute-Efficient MLLM Pre-Training
