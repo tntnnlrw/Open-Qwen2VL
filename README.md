@@ -70,6 +70,12 @@ bash mm_sequence_packing/multiprocess_sequence_packing_image_to_pil.sh 0 4 504 d
 bash mm_sequence_packing/multiprocess_sequence_packing_image_to_pil.sh 0 4 326 ccs
 ```
 
+[Update on 5/16/2025]
+We support sequence packing into a single json file which contains base64-string images and texts. Storing in json files can save 95% more disk space. You can run
+```shell
+bash mm_sequence_packing/multiprocess_sequence_packing_image_to_json.sh 0 4 504 /path/to/datacomp_wds /path/to/datacomp_packed_files
+```
+
 ## Compute-Efficient MLLM Pre-Training
 Prior to training, please follow the sequence packing instructions in the README to prepare the pickle files for each subdataset.
 

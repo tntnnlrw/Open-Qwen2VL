@@ -159,9 +159,9 @@ class FinetuneDataset(Dataset[Dict[str, torch.Tensor]]):
         for turn_idx, turn in enumerate(conversation):
             # Get "effective" string added to prompt --> handle whitespace for tokenizer type!
             msg = prompt_builder.add_turn(turn["from"], turn["value"])
-            if DEFAULT_IMAGE_TOKEN in msg and len(msg.split(DEFAULT_IMAGE_TOKEN)) == 2:
-                msg = DEFAULT_IMAGE_TOKEN + '\n' + msg.replace(DEFAULT_IMAGE_TOKEN, '').strip()
-                msg = msg.strip()
+            # if DEFAULT_IMAGE_TOKEN in msg and len(msg.split(DEFAULT_IMAGE_TOKEN)) == 2:
+            #     msg = DEFAULT_IMAGE_TOKEN + '\n' + msg.replace(DEFAULT_IMAGE_TOKEN, '').strip()
+            #     msg = msg.strip()
 
             # Llama Tokenizer (Fast) adds extra character if a string ends in whitespace --> strip if non-empty!
             if isinstance(self.tokenizer, LlamaTokenizerFast):
@@ -270,9 +270,9 @@ class FinetuneLargeDataset(Dataset[Dict[str, torch.Tensor]]):
         for turn_idx, turn in enumerate(conversation):
             # Get "effective" string added to prompt --> handle whitespace for tokenizer type!
             msg = prompt_builder.add_turn(turn["from"], turn["value"])
-            if DEFAULT_IMAGE_TOKEN in msg and len(msg.split(DEFAULT_IMAGE_TOKEN)) == 2:
-                msg = DEFAULT_IMAGE_TOKEN + '\n' + msg.replace(DEFAULT_IMAGE_TOKEN, '').strip()
-                msg = msg.strip()
+            # if DEFAULT_IMAGE_TOKEN in msg and len(msg.split(DEFAULT_IMAGE_TOKEN)) == 2:
+            #     msg = DEFAULT_IMAGE_TOKEN + '\n' + msg.replace(DEFAULT_IMAGE_TOKEN, '').strip()
+            #     msg = msg.strip()
 
             # Llama Tokenizer (Fast) adds extra character if a string ends in whitespace --> strip if non-empty!
             if isinstance(self.tokenizer, LlamaTokenizerFast):
